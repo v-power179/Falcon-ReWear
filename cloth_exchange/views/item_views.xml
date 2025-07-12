@@ -1,0 +1,53 @@
+<odoo>
+    <record id="view_rewear_item_form" model="ir.ui.view">
+        <field name="name">rewear.item.form</field>
+        <field name="model">rewear.item</field>
+        <field name="arch" type="xml">
+            <form string="ReWear Item">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="category"/>
+                        <field name="type"/>
+                        <field name="size"/>
+                        <field name="condition"/>
+                        <field name="tags"/>
+                        <field name="points_required"/>
+                        <field name="image_ids" widget="many2many_binary"/>
+                        <field name="status" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_rewear_item_list" model="ir.ui.view">
+        <field name="name">rewear.item.list</field>
+        <field name="model">rewear.item</field>
+        <field name="arch" type="xml">
+            <list string="ReWear Items">
+                <field name="name"/>
+                <field name="category"/>
+                <field name="type"/>
+                <field name="size"/>
+                <field name="condition"/>
+                <field name="status"/>
+                <field name="points_required"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_rewear_item" model="ir.actions.act_window">
+        <field name="name">ReWear Items</field>
+        <field name="res_model">rewear.item</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your first ReWear item</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_rewear_root" name="Cloth Exchange"/>
+    <menuitem id="menu_rewear_item" name="Items" parent="menu_rewear_root"/>
+    <menuitem id="menu_rewear_item_list" name="All Items" parent="menu_rewear_item" action="action_rewear_item"/>
+</odoo>
